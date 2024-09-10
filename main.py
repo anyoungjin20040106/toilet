@@ -8,7 +8,7 @@ app = FastAPI()
 model = joblib.load('toiletmodel.pkl')
 
 @app.post("/toilet")
-def predict(longitude: str=Form(...), latitude: str=Form(...)):
-    X_new = [[float(longitude), float(latitude)]]
+def predict(lon: str=Form(...), lat: str=Form(...)):
+    X_new = [[float(lon), float(lat)]]
     prediction = model.predict(X_new)
     return {"prediction": prediction[0]}
